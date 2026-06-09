@@ -1,31 +1,36 @@
 #include <iostream>
+#include <string>
+using namespace std;
 
 double balance = 0;
 
 void income(double value){
-    std::cout << "Enter your new income: ";
-    std::cin >> value;
-    if (value > 0){
-        balance += value;
-        std::cout << "Congrats' you have added income :)" << std::endl;
-    } else {
-        std::cout << "Error: Income's value must to be more than 0" << std::endl;
-    }
+    cout << "Enter your new income: ";
+    cin >> value;
+    
+    (value > 0) ? balance += value : balance;
+    
+    string result = (value > 0) ? 
+    "Congrats' you have added income :)" : 
+    "Error: Income's value must to be more than 0";
+    
+    cout << result << endl;
 }
 
 void expense(double value) {
-    std::cout << "Enter your new expense: ";
-    std::cin >> value;
-    if (value > balance){
-        std::cout << "Error: Expense's value must to be more than 0" << std::endl;
-    } else {
-        balance -= value;
-        std::cout << "Congrats' you have decreased your balance :)" << std::endl;
-    }
+    cout << "Enter your new expense: ";
+    cin >> value;
+    (value > balance) ? balance : balance -= value;
+
+    string result = (value > 0) ? 
+    "Congrats' you have decreased your balance :)" : 
+    "Error: Expense's value must to be more than 0";
+    
+    cout << result << endl;
 }
 
 void showBalance() {
-    std::cout << "Your current balance is: " << balance << std::endl;
+    cout << "Your current balance is: " << balance << endl;
 }
 
 int main(){
