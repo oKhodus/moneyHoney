@@ -3,6 +3,8 @@
 double balance = 0;
 
 void income(double value){
+    std::cout << "Enter your new income: ";
+    std::cin >> value;
     if (value > 0){
         balance += value;
         std::cout << "Congrats' you have added income :)" << std::endl;
@@ -12,23 +14,25 @@ void income(double value){
 }
 
 void expense(double value) {
+    std::cout << "Enter your new expense: ";
+    std::cin >> value;
     if (value > balance){
         std::cout << "Error: Expense's value must to be more than 0" << std::endl;
-    }else {
+    } else {
         balance -= value;
         std::cout << "Congrats' you have decreased your balance :)" << std::endl;
     }
 }
 
+void showBalance() {
+    std::cout << "Your current balance is: " << balance << std::endl;
+}
+
 int main(){
     double UserValue;
-    std::cout << "Enter your new income: ";
-    std::cin >> UserValue;
     income(UserValue);
-    std::cout << "Your current balance is: " << balance << std::endl;
-    std::cout << "Enter your new expense: ";
-    std::cin >> UserValue;
+    showBalance();
     expense(UserValue);
-    std::cout << "Your current balance is: " << balance << std::endl;
+    showBalance();
     return 0;
 }
