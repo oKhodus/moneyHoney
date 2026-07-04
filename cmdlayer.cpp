@@ -11,7 +11,7 @@ namespace CMDLayer {
         if (cmd == "/add")
         {
             double UserValue;
-            cout << "Enter your new expense: ";
+            cout << "Enter your new income: ";
             cin >> UserValue;
             income(UserValue);
             showBalance();
@@ -23,7 +23,7 @@ namespace CMDLayer {
         else if (cmd == "/exp")
         {
             double UserValue;
-            cout << "Enter your new income: ";
+            cout << "Enter your new expense: ";
             cin >> UserValue;
             expense(UserValue);
             showBalance();
