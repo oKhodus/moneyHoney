@@ -1,35 +1,48 @@
 #include <iostream>
 #include <string>
-#include "cmds.cpp"
+#include "cmdlayer.h"
 using namespace std;
-using namespace CMDS;
-
 
 namespace CMDLayer {
-    void CmdLayer(string cmd) {
+    void CmdLayer(const string& cmd, Wallet& wallet) {
 
-        if (cmd == "/add")
-        {
+        if (cmd == "/add") {
             double UserValue;
             cout << "Enter your new income: ";
-            cin >> UserValue;
-            income(UserValue);
-            showBalance();
+            if (!(cin >> UserValue)) {
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Error: Please enter a valid number" << endl;
+                return;
+            }
+            wallet.income(UserValue);
+            wallet.showBalance();
         }
-        else if (cmd == "/bal")
-        {
-            showBalance();
+        else if (cmd == "/bal") {
+            wallet.showBalance();
         }
-        else if (cmd == "/exp")
-        {
+        else if (cmd == "/exp") {
             double UserValue;
             cout << "Enter your new expense: ";
-            cin >> UserValue;
-            expense(UserValue);
-            showBalance();
+            if (!(cin >> UserValue)) {
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Error: Please enter a valid number" << endl;
+                return;
+            }
+            wallet.expense(UserValue);
+            wallet.showBalance();
+        }
+        else if (cmd == "/help") {
+            cout << "Available commands:" << endl;
+            cout << "  /add   - Add income to your balance" << endl;
+            cout << "  /exp   - Record an expense" << endl;
+            cout << "  /bal   - Display your current balance" << endl;
+            cout << "  /help  - Show this help message" << endl;
+            cout << "  /quit  - Exit the application" << endl;
         }
         else {
-            cout << "Error: Incorrect command :(";
+            cout << "Error: Incorrect command :( Use /help for available commands" << endl;
         }
     }
 
